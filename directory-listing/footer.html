@@ -23,6 +23,14 @@
     var iconLinks = document.querySelectorAll('.indexcolicon a');
     Array.prototype.forEach.call(iconLinks, function(link) {
       link.setAttribute('tabindex', '-1');
+      const imgs = new Set(['jpg', 'jpeg', 'png', 'gif', 'svg', 'bmp', 'ico', 'webp', 'tiff', 'tif'])
+      const filepath = link.getAttribute('href')
+      const fileext = filepath.split('.').pop()
+      if (imgs.has(fileext)) {
+        const fallback = link.children[0].getAttribute('src')
+        link.children[0].setAttribute('src', filepath);
+        link.children[0].setAttribute('onerror', 'this.onerror = null; this.src="' + fallback + '"";');
+      }
     });
 
     var path = document.querySelector('.js-path');
