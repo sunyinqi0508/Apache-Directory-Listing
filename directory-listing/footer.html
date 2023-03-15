@@ -21,6 +21,10 @@
 
     // Make all the icon links unfocusable with tab
     var iconLinks = document.querySelectorAll('.indexcolicon a');
+    function onError (obj, fallback) {
+      obj.onerror = null;
+      obj.setAttribute('src', fallback);
+    } 
     Array.prototype.forEach.call(iconLinks, function(link) {
       link.setAttribute('tabindex', '-1');
       const imgs = new Set(['jpg', 'jpeg', 'png', 'gif', 'svg', 'bmp', 'ico', 'webp', 'tiff', 'tif'])
@@ -29,7 +33,7 @@
       if (imgs.has(fileext)) {
         const fallback = link.children[0].getAttribute('src')
         link.children[0].setAttribute('src', filepath);
-        link.children[0].setAttribute('onerror', 'this.onerror = null; this.src="' + fallback + '"";');
+        link.children[0].setAttribute('onerror', 'onError(this, "' + fallback + '")');
       }
     });
 

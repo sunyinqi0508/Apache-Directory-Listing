@@ -66,9 +66,3 @@ address {
   font-size: 0.875rem;
   opacity: 0.875;
 }
-
-.indexcolicon img {
-  object-fit: cover;
-  width: 1.5rem;
-  height: 1.5rem;
-}

@@ -55,5 +55,8 @@ table tr .indexcolsize {
 }
 
 table tr .indexcolicon img {
+  object-fit: cover;
   width: 2rem;
+  height: 2rem;
 }
+
